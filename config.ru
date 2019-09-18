@@ -6,5 +6,5 @@ end
 
 # Send PATCH and DELETE requests
 use Rack::MethodOverride
-
+use UsersController
 run ApplicationController
