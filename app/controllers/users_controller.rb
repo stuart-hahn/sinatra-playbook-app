@@ -17,4 +17,15 @@ class UsersController < ApplicationController
         end
     end
 
+    #individual user's show page
+    get "/users/:id" do
+
+    end
+
+    #SIGNUP ROUTE
+    #render the signup form
+    get "/signup" do
+        erb :signup
+    end
+
 end
