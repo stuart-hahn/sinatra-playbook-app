@@ -19,7 +19,8 @@ class UsersController < ApplicationController
 
     #individual user's show page
     get "/users/:id" do
-
+        @user = User.find_by(id: params[:id])
+        erb :"users/show"
     end
 
     #SIGNUP ROUTE
@@ -31,7 +32,6 @@ class UsersController < ApplicationController
     post "/users" do
         if params[:name] != "" && params[:email] != "" && params[:passowrd] != ""
             @user = User.create(params)
-            binding.pry
             redirect "/users/#{@user.id}"
         else
             redirect "/signup"
