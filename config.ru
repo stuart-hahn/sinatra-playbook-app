@@ -9,4 +9,5 @@ use Rack::MethodOverride
 
 # Mount controllers
 use UsersController
+use PlaysController
 run ApplicationController
