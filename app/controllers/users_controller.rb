@@ -32,10 +32,16 @@ class UsersController < ApplicationController
     post "/users" do
         if params[:name] != "" && params[:email] != "" && params[:passowrd] != ""
             @user = User.create(params)
+            session[:user_id] = @user.id
             redirect "/users/#{@user.id}"
         else
             redirect "/signup"
         end
+    end
+
+    get "/logout" do
+        session.clear
+        redirect '/'
     end
 
 end
