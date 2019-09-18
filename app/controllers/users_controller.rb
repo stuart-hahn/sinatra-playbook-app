@@ -43,6 +43,8 @@ class UsersController < ApplicationController
         end
     end
 
+    #LOGOUT ROUTE
+    #log a user out and redirect to the homepage
     get "/logout" do
         session.clear
         redirect '/'
