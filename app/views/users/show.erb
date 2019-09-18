@@ -1,1 +1,6 @@
-users show.erb
+<h1><%= @user.name %>'s Playbook</h1>
+
+<% @user.plays.each do |play| %>
+    <h3>Formation: <%= play.formation %></h3>
+    <p><strong><%= play.name %>: </strong><%= play.setup %></p>
+<% end %>
