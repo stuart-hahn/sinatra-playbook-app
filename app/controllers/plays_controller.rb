@@ -20,6 +20,7 @@ class PlaysController < ApplicationController
     # SHOW ROUTE
     # render the individual play's show page
     get '/plays/:id' do
+        @play = Play.find_by(id: params[:id])
         erb :"/plays/show"
     end
 
