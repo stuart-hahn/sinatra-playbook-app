@@ -34,9 +34,8 @@ class UsersController < ApplicationController
     end
 
     post "/users" do
-        if params[:name] != "" && params[:email] != "" && params[:passowrd] != ""
+        if no_empty_params
             @user = User.create(params)
-            session[:user_id] = @user.id
             redirect "/users/#{@user.id}"
         else
             redirect "/signup"
@@ -48,6 +47,17 @@ class UsersController < ApplicationController
     get "/logout" do
         session.clear
         redirect '/'
+    end
+
+    # PRIVATE HELPER METHODS (for UsersController)
+    private
+
+    def no_empty_params
+        params[:name] != "" && params[:email] != "" && params[:password] != ""
+    end
+
+    def create_session
+        session[:user_id] = @user.id
     end
 
 end
