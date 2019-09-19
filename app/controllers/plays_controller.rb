@@ -13,7 +13,7 @@ class PlaysController < ApplicationController
             redirect '/'
         end
 
-        if params[:formation] != "" && params[:name] != "" && params[:setup] != ""
+        if no_empty_params
             @play = Play.create(params)
             @play.user_id = @current_user.id
             @play.save
@@ -41,7 +41,7 @@ class PlaysController < ApplicationController
     # Render the form to edit a play
     get '/plays/:id/edit' do
         @play = Play.find_by(id: params[:id])
-        if logged_in? && @play.user == current_user
+        if authorized_to_edit
             erb :"plays/edit"
         else
             redirect '/'
@@ -50,7 +50,7 @@ class PlaysController < ApplicationController
 
     patch '/plays/:id' do
         @play = Play.find_by(id: params[:id])
-        if logged_in? && @play.user == current_user
+        if authorized_to_edit
             @play.formation = params[:formation]
             @play.name = params[:name]
             @play.setup = params[:setup]
@@ -68,6 +68,15 @@ class PlaysController < ApplicationController
         @play = Play.find_by(id: params[:id])
         @play.delete
         redirect "/plays"
+    end
+
+    #PRIVATE HELPER METHODS (for PlaysController)
+    def no_empty_params
+        params[:formation] != "" && params[:name] != "" && params[:setup] != ""
+    end
+
+    def authorized_to_edit
+        logged_in? && @play.user == current_user
     end
 
 end
