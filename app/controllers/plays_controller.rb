@@ -8,9 +8,15 @@ class PlaysController < ApplicationController
 
     # Take the params from the form and create a new play in the db
     # Then redirect to that play's show page
-    post "/plays/" do
+    post "/plays" do
+        if !logged_in?
+            redirect '/'
+        end
+
         if params[:formation] != "" && params[:name] != "" && params[:setup] != ""
             @play = Play.create(params)
+            @play.user_id = @current_user.id
+            @play.save
             redirect "/plays/#{@play.id}"
         else
             redirect '/plays/new'
@@ -35,6 +41,9 @@ class PlaysController < ApplicationController
     get '/plays/:id/edit' do
         @play = Play.find_by(id: params[:id])
         erb :"plays/edit"
+    end
+
+    patch '/plays/:id' do
     end
 
 end
