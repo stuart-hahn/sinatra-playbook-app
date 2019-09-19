@@ -50,7 +50,7 @@ class PlaysController < ApplicationController
 
     patch '/plays/:id' do
         @play = Play.find_by(id: params[:id])
-        if authorized_to_edit
+        if authorized_to_edit && no_empty_params
             @play.formation = params[:formation]
             @play.name = params[:name]
             @play.setup = params[:setup]
