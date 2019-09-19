@@ -35,10 +35,11 @@ class UsersController < ApplicationController
     end
 
     post "/users" do
-        if no_empty_params
-            @user = User.create(params)
+        @user = User.new(params)
+        if @user.save
             redirect "/users/#{@user.id}"
         else
+            flash[:message] = "#{@user.errors.full_messages.to_sentence}"
             redirect "/signup"
         end
     end
