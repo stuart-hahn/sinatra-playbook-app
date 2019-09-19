@@ -44,6 +44,12 @@ class PlaysController < ApplicationController
     end
 
     patch '/plays/:id' do
+        @play = Play.find_by(id: params[:id])
+        @play.formation = params[:formation]
+        @play.name = params[:name]
+        @play.setup = params[:setup]
+        @play.save
+        redirect "/plays/#{@play.id}"
     end
 
 end

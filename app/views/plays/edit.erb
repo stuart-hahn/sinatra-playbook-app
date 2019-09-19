@@ -3,7 +3,7 @@
 <p><strong>Play Name:</strong> <%= @play.name %></p>
 <p><strong>Setup:</strong> <%= @play.setup %></p>
 
-<form action="/plays/:id" method="post">
+<form action="/plays/<%= @play.id %>" method="post">
 <input id="hidden" type="hidden" name="_method" value="patch">
     <label for="formation">Formation: </label>
     <input type="text" name="formation"></br>
