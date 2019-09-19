@@ -30,4 +30,11 @@ class PlaysController < ApplicationController
         erb :"/plays/show"
     end
 
+    # EDIT ROUTES (updating)
+    # Render the form to edit a play
+    get '/plays/:id/edit' do
+        @play = Play.find_by(id: params[:id])
+        erb :"plays/edit"
+    end
+
 end

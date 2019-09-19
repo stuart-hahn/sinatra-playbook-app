@@ -1,0 +1,15 @@
+<h2>Edit this play</h2>
+<p><strong>Formation:</strong> <%= @play.formation %></p>
+<p><strong>Play Name:</strong> <%= @play.name %></p>
+<p><strong>Setup:</strong> <%= @play.setup %></p>
+
+<form action="/plays/:id" method="post">
+<input id="hidden" type="hidden" name="_method" value="patch">
+    <label for="formation">Formation: </label>
+    <input type="text" name="formation"></br>
+    <label for="name">Play Name: </label>
+    <input type="text" name="name"></br>
+    <label for="setup">Setup: </label>
+    <input type="text" name="setup"></br>
+    <button type="submit">Edit Play</button>
+</form>
