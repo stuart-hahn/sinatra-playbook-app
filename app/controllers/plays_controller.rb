@@ -41,16 +41,24 @@ class PlaysController < ApplicationController
     # Render the form to edit a play
     get '/plays/:id/edit' do
         @play = Play.find_by(id: params[:id])
-        erb :"plays/edit"
+        if logged_in? && @play.user == current_user
+            erb :"plays/edit"
+        else
+            redirect '/'
+        end
     end
 
     patch '/plays/:id' do
         @play = Play.find_by(id: params[:id])
-        @play.formation = params[:formation]
-        @play.name = params[:name]
-        @play.setup = params[:setup]
-        @play.save
-        redirect "/plays/#{@play.id}"
+        if logged_in? && @play.user == current_user
+            @play.formation = params[:formation]
+            @play.name = params[:name]
+            @play.setup = params[:setup]
+            @play.save
+            redirect "/plays/#{@play.id}"
+        else
+            redirect '/'
+        end
     end
 
     # DELETE ROUTE (destroying)
