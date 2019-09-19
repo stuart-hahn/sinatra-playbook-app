@@ -1,6 +1,6 @@
 class PlaysController < ApplicationController
 
-    # NEW ROUTE
+    # NEW ROUTE (creating)
     # Render a form to create a new play
     get "/plays/new" do
         erb :"/plays/new"
@@ -17,12 +17,13 @@ class PlaysController < ApplicationController
         end
     end
 
+    #INDEX ROUTE (reading)
     get "/plays" do
         @plays = Play.all
         erb :"/plays/index"
     end
 
-    # SHOW ROUTE
+    # SHOW ROUTE (reading)
     # render the individual play's show page
     get '/plays/:id' do
         @play = Play.find_by(id: params[:id])
