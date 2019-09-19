@@ -1,0 +1,7 @@
+<h1>All Plays</h1>
+<% @plays.each do |play| %>
+    </br><p><strong>Formation:</strong> <%= play.formation %></p>
+    <p><strong>Play Name:</strong> <%= play.name %></p>
+    <p><strong>Setup:</strong> <%= play.setup %></p></br>
+    <hr>
+<% end %>

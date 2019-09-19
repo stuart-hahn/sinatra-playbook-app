@@ -17,6 +17,11 @@ class PlaysController < ApplicationController
         end
     end
 
+    get "/plays" do
+        @plays = Play.all
+        erb :"/plays/index"
+    end
+
     # SHOW ROUTE
     # render the individual play's show page
     get '/plays/:id' do
