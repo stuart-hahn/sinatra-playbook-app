@@ -33,6 +33,7 @@ class PlaysController < ApplicationController
     # render the individual play's show page
     get '/plays/:id' do
         @play = Play.find_by(id: params[:id])
+        @user = User.find_by(id: @play.user_id)
         erb :"/plays/show"
     end
 
@@ -50,6 +51,15 @@ class PlaysController < ApplicationController
         @play.setup = params[:setup]
         @play.save
         redirect "/plays/#{@play.id}"
+    end
+
+    # DELETE ROUTE (destroying)
+    # Delete a play and redirect to the Play Index
+    # The delete button (form) is on the individual play's show page
+    delete "/plays/:id" do
+        @play = Play.find_by(id: params[:id])
+        @play.delete
+        redirect "/plays"
     end
 
 end

@@ -1,3 +1,8 @@
+<h2><%= @user.name %>'s Play</h2>
 <p><strong>Formation:</strong> <%= @play.formation %></p>
 <p><strong>Play Name:</strong> <%= @play.name %></p>
 <p><strong>Setup:</strong> <%= @play.setup %></p>
+<form action="/plays/<%= @play.id %>" method="post">
+<input id="hidden" type="hidden" name="_method" value="delete">
+<button type="submit">DELETE THIS PLAY</button>
+</form>
