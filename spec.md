@@ -14,8 +14,11 @@ Specs:
 - [x] Include user accounts with unique login attribute (username or email)
 - My app uses bcrypt to authenticate unique login attributes (I'm using email).
 - [x] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
+- You can create, read, update, and destroy Plays.
 - [x] Ensure that users can't modify content created by other users
-- [ ] Include user input validations
+- The edit/delete buttons don't show on the Play show page for Users who don't own that particular play.
+- [x] Include user input validations
+- I'm using the AR method "validates" to check that all inputs are properly filled out on the app's forms.
 - [ ] BONUS - not required - Display validation failures to user with error message (example form URL e.g. /posts/new)
 - [ ] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 
