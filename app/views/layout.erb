@@ -18,6 +18,10 @@
     <nav>
     <a href="/">Home</a>
     <a href="/plays">All Plays</a>
+    <% if !logged_in? %>
+    <a href="/signup">Signup</a>
+    <a href="/login">Log In</a>
+    <% end %>
     </nav>
         <% if flash[:message] %>
           <h3><%= flash[:message] %></h3>
