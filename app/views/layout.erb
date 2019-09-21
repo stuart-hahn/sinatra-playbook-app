@@ -24,6 +24,7 @@
     <% end %>
     <% if logged_in? %>
       <a href="/users/<%= @current_user.id %>">My Plays</a>
+      <a href="/logout">Log Out</a>
     <% end %>
     </nav>
         <% if flash[:message] %>
