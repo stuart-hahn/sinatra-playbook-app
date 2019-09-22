@@ -28,7 +28,7 @@
     <% end %>
     </nav>
         <% if flash[:message] %>
-          <h3><%= flash[:message] %></h3>
+          <h3 class="error"><%= flash[:message] %></h3>
         <% end %>
         <%= yield %>
 
