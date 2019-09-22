@@ -1,12 +1,12 @@
 <h2><%= @play.user.name %>'s Play</h2>
-<p><strong>Formation:</strong> <%= @play.formation %></p>
-<p><strong>Play Name:</strong> <%= @play.name %></p>
-<p><strong>Setup:</strong> <%= @play.setup %></p>
+<p><strong>Formation:</strong> <%= @play.formation %></br>
+<strong>Play Name:</strong> <%= @play.name %></br>
+<strong>Setup:</strong> <%= @play.setup %></p>
 
 <% if current_user == @play.user %>
     <form action="/plays/<%= @play.id %>" method="post">
     <input id="hidden" type="hidden" name="_method" value="delete">
     <button type="submit">DELETE THIS PLAY</button>
-    </form></br>
-    <a href='/plays/<%= @play.id %>/edit'>EDIT THIS PLAY</a>
+    </form>
+    <a class="edit" href='/plays/<%= @play.id %>/edit'>EDIT THIS PLAY</a>
 <% end %>
