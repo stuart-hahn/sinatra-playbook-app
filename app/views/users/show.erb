@@ -1,6 +1,7 @@
 <h1><%= @user.name %>'s Playbook</h1>
-
+<h3>Click on each play below to see more information</h3>
+<ul>
 <% @user.plays.each do |play| %>
-    <h3>Formation: <%= play.formation %></h3>
-    <p><strong><%= play.name %>: </strong><%= play.setup %></p>
+    <li><a href="/plays/<%= play.id %>"><strong>Play Name:</strong> <%= play.name %></a></li>
 <% end %>
+</ul>
