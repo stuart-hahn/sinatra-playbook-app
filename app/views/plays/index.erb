@@ -1,7 +1,8 @@
 <h1>All Plays</h1>
 <% @plays.each do |play| %>
-    </br><p><strong>Formation:</strong> <%= play.formation %></p>
-    <p><strong>Play Name:</strong> <%= play.name %></p>
-    <p><strong>Setup:</strong> <%= play.setup %></p></br>
+    <h3><%= play.user.name %>'s Play</h3>
+    <p><strong>Formation:</strong> <%= play.formation %></br>
+    <strong>Play Name:</strong> <%= play.name %></br>
+    <strong>Setup:</strong> <%= play.setup %></p>
     <hr>
 <% end %>
