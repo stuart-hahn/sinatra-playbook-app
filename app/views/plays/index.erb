@@ -3,6 +3,9 @@
     <h3><%= play.user.name %>'s Play</h3>
     <p><strong>Formation:</strong> <%= play.formation %></br>
     <strong>Play Name:</strong> <%= play.name %></br>
-    <strong>Setup:</strong> <%= play.setup %></p>
+    <strong>Setup:</strong> <%= play.setup %></br>
+    <% if play.user == current_user %>
+        <a class="edit" href="/plays/<%= play.id %>">Take a closer look</a></p>
+    <% end %>
     <hr>
 <% end %>
