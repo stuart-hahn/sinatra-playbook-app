@@ -33,7 +33,7 @@ class PlaysController < ApplicationController
     # render the individual play's show page
     get '/plays/:id' do
         @play = Play.find_by(id: params[:id])
-        @user = User.find_by(id: @play.user_id)
+        # @user = User.find_by(id: @play.user_id)
         erb :"/plays/show"
     end
 
@@ -71,6 +71,8 @@ class PlaysController < ApplicationController
     end
 
     #PRIVATE HELPER METHODS (for PlaysController)
+    private
+    
     def no_empty_params
         params[:formation] != "" && params[:name] != "" && params[:setup] != ""
     end
