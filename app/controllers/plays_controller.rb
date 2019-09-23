@@ -13,15 +13,27 @@ class PlaysController < ApplicationController
             redirect '/'
         end
 
-        if no_empty_params
-            @play = Play.create(params)
-            @play.user_id = @current_user.id
-            @play.save
+        @play = Play.new(params)
+        @play.user_id = @current_user.id
+        if @play.save
             redirect "/plays/#{@play.id}"
         else
-            redirect '/plays/new'
+            flash[:message] = "#{@play.errors.full_messages.to_sentence}"
+            redirect "/plays/new"
         end
     end
+    
+
+        # if no_empty_params
+        #     @play = Play.create(params)
+        #     @play.user_id = @current_user.id
+        #     @play.save
+        #     redirect "/plays/#{@play.id}"
+        # else
+        #     flash[:message] = 
+        #     redirect '/plays/new'
+        # end
+    # end
 
     #INDEX ROUTE (reading)
     get "/plays" do
@@ -72,7 +84,7 @@ class PlaysController < ApplicationController
 
     #PRIVATE HELPER METHODS (for PlaysController)
     private
-    
+
     def no_empty_params
         params[:formation] != "" && params[:name] != "" && params[:setup] != ""
     end
