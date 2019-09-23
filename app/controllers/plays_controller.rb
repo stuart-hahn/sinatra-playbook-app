@@ -22,18 +22,6 @@ class PlaysController < ApplicationController
             redirect "/plays/new"
         end
     end
-    
-
-        # if no_empty_params
-        #     @play = Play.create(params)
-        #     @play.user_id = @current_user.id
-        #     @play.save
-        #     redirect "/plays/#{@play.id}"
-        # else
-        #     flash[:message] = 
-        #     redirect '/plays/new'
-        # end
-    # end
 
     #INDEX ROUTE (reading)
     get "/plays" do
@@ -62,14 +50,14 @@ class PlaysController < ApplicationController
 
     patch '/plays/:id' do
         @play = Play.find_by(id: params[:id])
-        if authorized_to_edit && no_empty_params
-            @play.formation = params[:formation]
-            @play.name = params[:name]
-            @play.setup = params[:setup]
-            @play.save
+        @play.formation = params[:formation]
+        @play.name = params[:name]
+        @play.setup = params[:setup]
+        if @play.save
             redirect "/plays/#{@play.id}"
         else
-            redirect '/'
+            flash[:message] = "#{@play.errors.full_messages.to_sentence}"
+            redirect "/plays/#{@play.id}/edit"
         end
     end
 
